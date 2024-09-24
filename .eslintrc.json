@@ -10,11 +10,13 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
+
   "rules": {
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|^err"
+        "argsIgnorePattern": "res|next|^err",
+        "@typescript-eslint/no-namespace": "off"
       }
     ],
     "arrow-body-style": [2, "as-needed"],
