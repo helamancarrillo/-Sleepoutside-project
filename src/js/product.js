@@ -8,12 +8,8 @@ const productId = getParam("product");
 const details = new ProductDetails(productId, dataSource);
 details.init();
 
-// console.log(productId);  
+// console.log(productId);
 // console.log(dataSource.findProductById(productId));
-
-
-
-
 
 // add to cart button event handler
 // async function addToCartHandler(e) {
