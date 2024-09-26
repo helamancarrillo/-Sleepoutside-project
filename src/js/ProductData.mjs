@@ -23,10 +23,10 @@ export default class ProductData {
     return products.find((item) => item.Id === id);
   }
 
-  async findProductById(id) {
-    const products = await this.getData();
-    console.log("Products fetched:", products);
-    return products.find((item) => item.Id === id);
-  }
+  // async findProductById(id) {
+  //   const products = await this.getData();
+  //   console.log("Products fetched:", products);
+  //   return products.find((item) => item.Id === id);
+  // }
   
 }
