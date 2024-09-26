@@ -3,17 +3,17 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("addToCart");
   if (cartItems === null) {
-    setLocalStorage("addToCart",[]);
+    setLocalStorage("addToCart", []);
   } else {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
   }
   // add listeners to the X beside each cart item
-  document.querySelectorAll(".cart-card__remove").forEach(element => {
+  document.querySelectorAll(".cart-card__remove").forEach((element) => {
     element.addEventListener("click", () => {
       const itemId = element.getAttribute("data-id");
-        // alert(`Remove button clicked ${itemId}`);
-        removeCartItem(itemId);
+      // alert(`Remove button clicked ${itemId}`);
+      removeCartItem(itemId);
     });
   });
 }
@@ -41,15 +41,14 @@ function cartItemTemplate(item) {
 renderCartContents();
 
 function removeCartItem(idToRemove) {
-  const cartItems = getLocalStorage("addToCart"); 
+  const cartItems = getLocalStorage("addToCart");
   // get the array index of the item to be removed
-  const index = cartItems.findIndex(item => item.Id === idToRemove);
+  const index = cartItems.findIndex((item) => item.Id === idToRemove);
 
   if (index !== -1) {
     cartItems.splice(index, 1); //remove the item from the cart array
   }
 
-  setLocalStorage("addToCart",cartItems); //save the updated cart to localStorage
+  setLocalStorage("addToCart", cartItems); //save the updated cart to localStorage
   renderCartContents(); //refresh the items on the page
 }
-
