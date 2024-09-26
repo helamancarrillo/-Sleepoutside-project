@@ -19,7 +19,7 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 - `npm run lint` to run ESLint against your code to find errors.
 - `npm run format` to run Prettier to automatically format your code.
 
-## Website Link
+## Website Links
 
 [Heather's Private Version](https://main--zingy-sopapillas-dd3591.netlify.app/)  
 [WDD340 Group Version](https://sleep-out-1.netlify.app/)
