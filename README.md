@@ -21,6 +21,6 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 
 ## Website Link
 
-Heather's Private Version (https://main--zingy-sopapillas-dd3591.netlify.app/)
-WDD340 Group Version (https://sleep-out-1.netlify.app/)
+[Heather's Private Version](https://main--zingy-sopapillas-dd3591.netlify.app/)
+[WDD340 Group Version](https://sleep-out-1.netlify.app/)
 
