@@ -54,9 +54,7 @@ export default class ProductDetails {
 
         const element = document.querySelector(selector);
         element.insertAdjacentHTML(
-    
           "afterBegin",
-    
           productDetailsTemplate(this.product)
     
         );
