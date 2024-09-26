@@ -1,4 +1,4 @@
-// import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
     return `<li class="product-card">
@@ -23,11 +23,11 @@ export default class ProductListing {
     async init() {
         const list = await this.dataSource.getData();
         // render the list
-        this.renderList(list);
+        renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", false);
     }
-    renderList(list) {
-        const htmlStrings = list.map(productCardTemplate);  
-        this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-        // renderListWithTemplate(...);
-    }
+
+    // renderList(list) {
+    //     const htmlStrings = list.map(productCardTemplate);  
+    //     this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+    // }
 }
