@@ -22,8 +22,12 @@ export default class ProductListing {
 
     async init() {
         const list = await this.dataSource.getData();
+
+        // reduce product list to first 4 products
+        let newList = list.filter((product, i) => i < 4);
+
         // render the list
-        renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", false);
+        renderListWithTemplate(productCardTemplate, this.listElement, newList, "afterbegin", false);
     }
 
     // renderList(list) {
