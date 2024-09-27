@@ -4,10 +4,10 @@ import ProductDetails from "./ProductDetails.mjs";
 
 const dataSource = new ProductData("tents");
 const productId = getParams("product");
-const product = new ProductDetails();
+const product = new ProductDetails(productId, dataSource);
 
 product.init();
-console.log(dataSource.findProductById(productId));
+// console.log(dataSource.findProductById(productId));
 
 //function addProductToCart(product) {
 //  setLocalStorage("so-cart", product);
