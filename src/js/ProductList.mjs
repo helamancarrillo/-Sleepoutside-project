@@ -1,3 +1,14 @@
+productCardTemplate = (product) => {
+    return `<li class="product-card">
+       <a href="product_pages/index.html?product=">
+          <img src="${product.image}" alt="${product.title}">
+          <h3 class="card_brand"></h3>
+          <h2 class="card_name">${product.title}</h2>
+          <p class="product-card_price">$${product.price}</p>
+        </a>
+      </li>`;
+  }
+
 export default class ProductListing {
     constructor(category, dataSource, listElement) {
       // We passed in this information to make our class as reusable as possible.
