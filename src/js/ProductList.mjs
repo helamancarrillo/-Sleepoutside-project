@@ -1,3 +1,5 @@
+import { renderListWithTemplate } from "./utils.mjs";
+
 function productListTemplate(product) {
   return `<li class="product-card">
     <a href="product_pages/marmot-ajax-3.html">
@@ -5,7 +7,7 @@ function productListTemplate(product) {
         src="images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
         alt="Marmot Ajax tent"
       />
-      <h3 class="card__brand">Marmot</h3>
+      <h3 class="card__brand">${product.Name}</h3>
       <h2 class="card__name">Ajax Tent - 3-Person, 3-Season</h2>
       <p class="product-card__price">$199.99</p>
     </a>
@@ -22,10 +24,21 @@ export default class ProductListing {
 
   async init() {
     const list = await this.dataSource.getData();
+    console.log(list);
+    this.renderList(list);
   }
 
+  // renderList(list) {
+  //   const htmlString = list.map(productListTemplate);
+  //   this.listElement.insertAdjacentHTML("afterbegin", htmlString.join(""));
+  // }
+
   renderList(list) {
-    const htmlString = list.map(productListTemplate);
-    this.listElement.insertAdjacentHTML("afterbegin", htmlString.join(""));
+    renderListWithTemplate(
+      productListTemplate,
+      this.listElement,
+      list,
+      "afterbegin",
+    );
   }
 }

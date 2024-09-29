@@ -8,11 +8,26 @@ export function qs(selector, parent = document) {
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
-}   
+}
 
 // save data to local storage
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
+}
+
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position,
+  clear,
+) {
+  const htmlString = list.map(templateFn);
+  if (clear) {
+    parentElement.innerHTML = " ";
+  }
+
+  parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
 // set a listener for both touchend and click

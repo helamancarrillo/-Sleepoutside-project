@@ -3,7 +3,7 @@ import { getLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 
 const dataSource = new ProductData("tents");
-
+console.log(dataSource);
 //function addProductToCart(product) {
 //  setLocalStorage("so-cart", product);
 //}
