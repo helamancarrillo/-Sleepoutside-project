@@ -24,9 +24,8 @@ export default class ProductListing {
     const list = await this.dataSource.getData();
   }
 
-  renderList(selector) {
-    const element = document.querySelector(selector);
-
-    element.map((el) => el.productListTemplate());
+  renderList(list) {
+    const htmlString = list.map(productListTemplate);
+    this.listElement.insertAdjacentHTML("afterbegin", htmlString.join(""));
   }
 }
