@@ -32,7 +32,10 @@ function renderCartContents() {
 
     cartHTML += `</ul>`;
 
-    const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
+    const cartTotal = cartItems.reduce(
+      (total, item) => total + item.FinalPrice,
+      0,
+    );
     cartHTML += `
       <div class="cart-footer show">
         <p class="item-count">Total Items: ${cartItems.length}</p>
@@ -72,7 +75,7 @@ function removeItemFromCart(id) {
 }
 
 function handleCheckout() {
-  console.log("Proceeding to checkout...");
+  // console.log("Proceeding to checkout...");
   // Add checkout functionality here
 }
 
