@@ -35,7 +35,32 @@ export function getParam(param) {
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(templateFn); 
   if (clear) {
-    parentElement.clear;
+    parentElement.innerHTML = "";
   } 
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if(callback) {
+    callback(data);
+  }
+}
+
+export async function loadTemplate(path) {
+  const html = await fetch(path).then(response => response.text());
+  return html;
+  // const template = document.createElement("template");
+  // template.innerHTML = html;
+  // return template;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const headerElement = document.getElementById("main-header");
+  renderWithTemplate(headerTemplate, headerElement);
+
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const footerElement = document.getElementById("main-footer");
+  renderWithTemplate(footerTemplate, footerElement)
 }
