@@ -79,6 +79,8 @@ function handleCheckout() {
   // Add checkout functionality here
 }
 
+function move() {}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderCartContents();
 });
