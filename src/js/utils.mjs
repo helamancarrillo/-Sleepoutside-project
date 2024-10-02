@@ -38,3 +38,49 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get(param);
+
+  return product;
+}
+
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
+  const htmlStrings = list.map(templateFn);
+  if (clear) {
+    parentElement.clear;
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export function renderWithTemplate(templateFn, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", templateFn);
+
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = res.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../public/partials/header.html");
+  const footerTemplate = await loadTemplate("../public/partials/");
+  const headerElement = document.createElement("#main-header");
+  const footerElement = document.createElement("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+}

@@ -26,7 +26,6 @@ export default class ProductData {
   async findProductById(id) {
     const products = await this.getData();
     console.log("Products fetched:", products);
-
     return products.find((item) => item.Id === id);
   }
 }
