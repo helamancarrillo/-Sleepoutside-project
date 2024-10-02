@@ -15,20 +15,20 @@ export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-export function renderListWithTemplate(
-  templateFn,
-  parentElement,
-  list,
-  position,
-  clear,
-) {
-  const htmlString = list.map(templateFn);
-  if (clear) {
-    parentElement.innerHTML = " ";
-  }
+// export function renderListWithTemplate(
+//   templateFn,
+//   parentElement,
+//   list,
+//   position,
+//   clear,
+// ) {
+//   const htmlString = list.map(templateFn);
+//   if (clear) {
+//     parentElement.innerHTML = " ";
+//   }
 
-  parentElement.insertAdjacentHTML(position, htmlString.join(""));
-}
+//   parentElement.insertAdjacentHTML(position, htmlString.join(""));
+// }
 
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -76,10 +76,10 @@ async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("../public/partials/header.html");
-  const footerTemplate = await loadTemplate("../public/partials/");
-  const headerElement = document.createElement("#main-header");
-  const footerElement = document.createElement("#main-footer");
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
