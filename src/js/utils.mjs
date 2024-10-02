@@ -48,12 +48,12 @@ export function renderWithTemplate(template, parentElement, data, callback) {
 }
 
 export async function loadTemplate(path) {
-  const html = await fetch(path).then(response => response.text);
-  // const template = document.createElement('template');
+  const html = await fetch(path).then(response => response.text());
+  return html;
+  // const template = document.createElement("template");
   // template.innerHTML = html;
   // return template;
-  return html;
-}  
+}
 
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("../partials/header.html");
@@ -62,6 +62,6 @@ export async function loadHeaderFooter() {
 
   const footerTemplate = await loadTemplate("../partials/footer.html");
   const footerElement = document.getElementById("main-footer");
-  renderWithTemplate(footerTemplate, footerElement);
+  renderWithTemplate(footerTemplate, footerElement)
 }
 
