@@ -10,7 +10,3 @@ const element = document.querySelector(".product-list");
 const list = new ProductListing("tents", tentData, element);
 
 list.init();
-<<<<<<< HEAD
-
-=======
->>>>>>> ea89de035200e53d89a1e7ab9867c5988cc00a1f
