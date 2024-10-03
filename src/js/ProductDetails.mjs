@@ -2,6 +2,7 @@ import { setLocalStorage } from "./utils.mjs";
 import { getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
+<<<<<<< HEAD
     return `<section class="product-detail">
     <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
@@ -22,6 +23,28 @@ function productDetailsTemplate(product) {
           <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
         </div>
         </section>`;
+=======
+  return `<section class="product-detail">
+  <h3>${product.Brand.Name}</h3>
+  <h2 class="divider">${product.NameWithoutBrand}</h2>
+       <img
+        class="divider"
+        src="${product.Image}"
+        alt="Image of ${product.NameWithoutBrand}"
+      />
+      <p class="product-card__price">$${product.FinalPrice}</p>
+
+      <p class="product__color">${product.Colors[0].ColorName}</p>
+
+      <p class="product__description">
+        ${product.DescriptionHtmlSimple}
+      </p>
+
+      <div class="product-detail__add">
+        <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+      </div>
+      </section>`;
+>>>>>>> ea89de035200e53d89a1e7ab9867c5988cc00a1f
 }
 
 export default class ProductDetails {

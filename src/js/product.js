@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
+=======
+import { getParam, loadHeaderFooter } from "./utils.mjs";
+import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductDetails.mjs";
+
+loadHeaderFooter();
+>>>>>>> ea89de035200e53d89a1e7ab9867c5988cc00a1f
 
 const dataSource = new ProductData("tents");
 const productId = getParam("product");
