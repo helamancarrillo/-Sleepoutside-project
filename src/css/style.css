@@ -202,10 +202,13 @@ button {
   grid-column: 3;
 }
 
+<<<<<<< HEAD
+=======
 .cart-card__remove {
   grid-column: 4;
   cursor: pointer;
 }
+>>>>>>> ea89de035200e53d89a1e7ab9867c5988cc00a1f
 .total-hide {
   display: none;
 }
