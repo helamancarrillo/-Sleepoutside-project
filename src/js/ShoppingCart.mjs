@@ -58,7 +58,7 @@ export default class ShoppingCart {
 }
 
 function calculateTotal(cartItems) {
-    let cartHTML = "";
+
     const itemCountElement = document.querySelector(".item-count");
     const totalElement = document.querySelector(".cart-total");
 

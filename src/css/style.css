@@ -166,15 +166,11 @@ button {
   width: 100%;
 }
 
-.product-list {
-  display: block;
-}
-
 /* Start cart list card styles */
 .cart-card {
+  width: 100%;
   display: grid;
-  grid-template-columns: 30% auto 15% 5%;
-  grid-gap: 10px;
+  grid-template-columns: 25% auto 15% 5%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -211,7 +207,6 @@ button {
   grid-column: 4;
   cursor: pointer;
 }
-
 .total-hide {
   display: none;
 }
