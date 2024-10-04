@@ -166,10 +166,15 @@ button {
   width: 100%;
 }
 
+.product-list {
+  display: block;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15% 5%;
+  grid-template-columns: 30% auto 15% 5%;
+  grid-gap: 10px;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -207,6 +212,10 @@ button {
   cursor: pointer;
 }
 
+.total-hide {
+  display: none;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -217,7 +226,7 @@ button {
   }
   .cart-card {
     font-size: inherit;
-    grid-template-columns: 150px auto 15%;
+    grid-template-columns: 150px auto 15% 5%;
   }
 }
 
