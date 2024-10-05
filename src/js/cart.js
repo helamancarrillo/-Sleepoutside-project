@@ -1,4 +1,6 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
 
 function renderCartContents() {
   const productList = document.querySelector(".product-list");
@@ -20,7 +22,7 @@ function renderCartContents() {
                 <h2 class="card__name">${item.Name}</h2>
               </a>
               <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-              <p class="cart-card__quantity">Quantity: 1</p>
+              <p class="cart-card__quantity">Quantity: <input type="number" class="quantity-input" data-id="${item.Id}" value="${item.Quantity}" min="1" />
               <p class="cart-card__price">$${item.FinalPrice}</p>
             </div>
           </div>
@@ -32,7 +34,7 @@ function renderCartContents() {
 
     cartHTML += `</ul>`;
 
-    const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
+    const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice * item.Quantity, 0);
     cartHTML += `
       <div class="cart-footer show">
         <p class="item-count">Total Items: ${cartItems.length}</p>
@@ -64,6 +66,27 @@ function attachEventListeners() {
   });
 }
 
+productList.addEventListener("change", function (event) {
+  const quantityInput = event.target.closest(".quantity-input");
+  if (quantityInput) {
+    const id = quantityInput.getAttribute("data-id");
+    const newQuantity = parseInt(quantityInput.value, 10);
+    updateItemQuantity(id, newQuantity);
+  }
+});
+
+function updateItemQuantity(id, newQuantity) {
+  let cart = getLocalStorage("addToCart") || [];
+  cart = cart.map((item) => {
+    if (item.Id.toString() === id) {
+      item.Quantity = newQuantity;
+    }
+    return item;
+  });
+  setLocalStorage("addToCart", cart);
+  renderCartContents();
+}
+
 function removeItemFromCart(id) {
   let cart = getLocalStorage("addToCart") || [];
   cart = cart.filter((item) => item.Id.toString() !== id); // Assuming ID is a number
@@ -78,4 +101,5 @@ function handleCheckout() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCartContents();
+  renderHeaderFooter();
 });
