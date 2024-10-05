@@ -35,12 +35,6 @@ export function getParam(param) {
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(templateFn); 
   if (clear) {
-<<<<<<< HEAD
-    parentElement.clear;
-  } 
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-}
-=======
     parentElement.innerHTML = "";
   } 
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
@@ -70,5 +64,3 @@ export async function loadHeaderFooter() {
   const footerElement = document.getElementById("main-footer");
   renderWithTemplate(footerTemplate, footerElement)
 }
-
->>>>>>> ea89de035200e53d89a1e7ab9867c5988cc00a1f
