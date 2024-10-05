@@ -21,7 +21,7 @@ export default class ProductListing {
     }
 
     async init() {
-        const list = await this.dataSource.getData();
+        const list = await this.dataSource.getData(this.category);
 
         // reduce product list to first 4 products
         let newList = list.filter((product, i) => i < 4);
