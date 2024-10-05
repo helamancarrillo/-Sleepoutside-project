@@ -110,7 +110,8 @@ button {
   fill: gray;
 }
 
-.item-count, .cart-total {
+.item-count,
+.cart-total {
   margin-left: 10px;
   font-weight: bold;
 }
