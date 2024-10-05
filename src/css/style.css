@@ -139,6 +139,21 @@ button {
   color: var(--dark-grey);
 }
 /* Styles for product lists */
+.product-category {
+  flex: 0 1 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.product-category img {
+  max-width: 150px;
+  min-width: 90px;
+  height: auto;
+}
+
 .product-card {
   flex: 1 1 45%;
   margin: 0.25em;
