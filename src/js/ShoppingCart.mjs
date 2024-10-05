@@ -4,17 +4,17 @@ function cartItemTemplate(item) {
     const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
-        src="${item.Image}"
-        alt="${item.Name}"
+        src="${item.product.Image}"
+        alt="${item.product.Name}"
       />
     </a>
     <a href="#">
-      <h2 class="card__name">${item.Name}</h2>
+      <h2 class="card__name">${item.product.Name}</h2>
     </a>
-    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
-    <p class="cart-card__price">$${item.FinalPrice}</p>
-    <span class="cart-card__remove" data-id=${item.Id}>❌</span>
+    <p class="cart-card__color">${item.product.Colors[0].ColorName}</p>
+    <p class="cart-card__quantity">qty: ${item.quantity}</p>
+    <p class="cart-card__price">$${item.product.FinalPrice}</p>
+    <span class="cart-card__remove" data-id=${item.product.Id}>❌</span>
   </li>`;
   
     return newItem;
@@ -43,10 +43,29 @@ export default class ShoppingCart {
         calculateTotal(cartItems);
       }
 
+      addToCart(prodArray) {
+        const cartItems = getLocalStorage(this.key) || []; // Retrieve existing items
+        const index = cartItems.findIndex((item) => item.product.Id === prodArray.Id);
+
+        let updatedCart = cartItems;
+        
+        if (index === -1) { //if item not in cart, then add it
+          const newItem = {
+            product: prodArray,
+            quantity: 1
+          }
+          updatedCart.push(newItem);
+
+        } else { //if item in cart, increase quantity
+          updatedCart[index].quantity += 1;
+        }
+        
+        setLocalStorage(this.key, updatedCart); // Save back to local storage
+    }
       removeCartItem(idToRemove) {
         const cartItems = getLocalStorage(this.key);
         // get the array index of the item to be removed
-        const index = cartItems.findIndex((item) => item.Id === idToRemove);
+        const index = cartItems.findIndex((item) => item.product.Id === idToRemove);
       
         if (index !== -1) {
           cartItems.splice(index, 1); //remove the item from the cart array
@@ -55,6 +74,8 @@ export default class ShoppingCart {
         setLocalStorage(this.key, cartItems); //save the updated cart to localStorage
         this.renderCartContents(); //refresh the items on the page
       }
+
+
 }
 
 function calculateTotal(cartItems) {
@@ -62,11 +83,14 @@ function calculateTotal(cartItems) {
     const itemCountElement = document.querySelector(".item-count");
     const totalElement = document.querySelector(".cart-total");
 
-    const cartTotal = cartItems.reduce(
-        (total, item) => total + item.FinalPrice,
-        0,
-    );
-    itemCountElement.innerHTML = `Items: ${cartItems.length}`;
+    const { totalQty, cartTotal } = cartItems.reduce((total, item) => {
+      total.totalQty += item.quantity;
+      total.cartTotal += item.product.FinalPrice * item.quantity
+      return total;
+    },
+  { totalQty: 0, cartTotal: 0 } //initialize the totals
+);
+    itemCountElement.innerHTML = `Items: ${totalQty}`;  
     totalElement.innerHTML = `Total: $${cartTotal.toFixed(2)}`;
 }
    
