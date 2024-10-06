@@ -2,8 +2,10 @@ import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs"
 
 loadHeaderFooter();
 
+const productList = document.querySelector(".product-list");
+console.log(productList);
+
 function renderCartContents() {
-  const productList = document.querySelector(".product-list");
   const cartItems = getLocalStorage("addToCart") || [];
   let cartHTML = "";
 
@@ -101,5 +103,4 @@ function handleCheckout() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCartContents();
-  renderHeaderFooter();
 });
