@@ -7,7 +7,7 @@ function productDetailsTemplate(product) {
   <h2 class="divider">${product.NameWithoutBrand}</h2>
        <img
         class="divider"
-        src="${product.Images.PrimaryLarge}"
+        src="${product.Image}"
         alt="Image of ${product.NameWithoutBrand}"
       />
       <p class="product-card__price">$${product.FinalPrice}</p>

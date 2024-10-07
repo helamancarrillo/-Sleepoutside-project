@@ -110,12 +110,6 @@ button {
   fill: gray;
 }
 
-.item-count,
-.cart-total {
-  margin-left: 10px;
-  font-weight: bold;
-}
-
 /* End cart icon styles */
 
 .mission {
@@ -130,13 +124,11 @@ button {
 }
 .product-list {
   display: flex;
-  flex-flow: row wrap; 
+  flex-flow: row wrap;
   justify-content: space-between;
   list-style-type: none;
   padding: 0;
-  flex-direction: row;
 }
-
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
@@ -176,7 +168,6 @@ button {
 
 /* Start cart list card styles */
 .cart-card {
-  width: 100%;
   display: grid;
   grid-template-columns: 25% auto 15% 5%;
   font-size: var(--small-font);
@@ -229,7 +220,7 @@ button {
   }
   .cart-card {
     font-size: inherit;
-    grid-template-columns: 150px auto 15% 5%;
+    grid-template-columns: 150px auto 15%;
   }
 }
 
