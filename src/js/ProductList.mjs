@@ -1,10 +1,10 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
-function productListTemplate(product) {
+function productCardTemplate(product) {
   return `<li class="product-card">
-    <a href="product_pages/index.html?product=${product.Id}">
+    <a href="/product_pages/index.html?product=${product.Id}">
       <img
-        src="${product.Image}"
+        src="${product.Images.PrimaryMedium}"
         alt="Image of ${product.Name}"
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -15,50 +15,29 @@ function productListTemplate(product) {
 }
 
 export default class ProductListing {
-  // constructor housing the category ,dataSource and listElement of the Productlisting class
-  constructor(category, dataSource, listElement) {
-    this.category = category;
-    this.dataSource = dataSource;
-    this.listElement = listElement;
-  }
+    constructor(category, dataSource, listElement) {
+        this.category = category;
+        this.dataSource = dataSource;
+        this.listElement = listElement;
+    }
 
-  async init() {
-    const list = await this.dataSource.getData();
-    const listToRender = this.filterProductList(list);
-    console.log(list);
-    this.renderList(listToRender);
-  }
+    async init() {
+        // const list = await this.dataSource.getData();
+        const list = await this.dataSource.getData(this.category);
 
-  // renderList(list) {
-  //   const htmlString = list.map(productListTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlString.join(""));
-  // }
-  // filterProductList(list) {
-  //   list.filter((el) => el.product.Name);
-  // }
+         // reduce product list to first 4 products
+         let newList = list.filter((product, i) => i < 4);
 
-  // Get the first 4 unique products
+        // render the list
+        this.renderList(newList);
+        // replace non alpha character with " " and capitalize each word
+        const catTitle = this.category.replace(/[^a-z]/gi, " ").replace(/\b\w/g, char => char.toUpperCase());
+        // concatenate the "Top Products heading with the category title"
+        document.querySelector(".title").innerHTML = catTitle;
+    }
 
-  filterProductList(list) {
-    const uniqueProducts = list.filter(
-      (list, index, self) =>
-        index ===
-        self.findIndex(
-          (el) =>
-            el.NameWithoutBrand.split("-")[0] ===
-            list.NameWithoutBrand.split("-")[0],
-        ),
-    );
+    renderList(list) {
+      renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", false);
+    }
 
-    return uniqueProducts;
-  }
-
-  renderList(list) {
-    renderListWithTemplate(
-      productListTemplate,
-      this.listElement,
-      list,
-      "afterbegin",
-    );
-  }
 }
