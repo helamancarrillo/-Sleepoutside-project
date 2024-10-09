@@ -3,7 +3,13 @@ import CheckoutProcess from "./checkoutProcess.mjs";
 
 loadHeaderFooter();
 
-const checkout = new CheckoutProcess("addToCart",".checkout-form")
-checkout.init();
-checkout.calculateOrdertotal();
+const myCheckout = new CheckoutProcess("addToCart",".checkout-form")
+myCheckout.init();
+myCheckout.calculateOrdertotal();
+
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    myCheckout.checkout();
+})
 
