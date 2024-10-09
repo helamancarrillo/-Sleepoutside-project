@@ -1,4 +1,4 @@
-import { getLocalStorage } from './utils.mjs';
+import { getLocalStorage } from "./utils.mjs";
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -18,7 +18,7 @@ export default class CheckoutProcess {
   
     calculateItemSummary() {
       // calculate and display the total amount of the items in the cart, and the number of items.
-        this.itemTotal = this.list.reduce((total, item) => total + item.finalPrice, 0);
+        this.itemTotal = this.list.reduce((total, item) => total + item.FinalPrice, 0);
         
   
     }
@@ -38,6 +38,16 @@ export default class CheckoutProcess {
   
     displayOrderTotals() {
       // once the totals are all calculated display them in the order summary page
+      const itemTotalSel = document.querySelector("#item-total")
+      const shippingSel = document.querySelector("#shipping")
+      const taxSel = document.querySelector("#tax")
+      const totalSel = document.querySelector("#order-total")
+
+      itemTotalSel.innerHTML += `$${this.itemTotal.toFixed(2)}`
+      shippingSel.innerHTML += `$${this.shipping.toFixed(2)}`
+      taxSel.innerHTML += `$${this.tax}`
+      totalSel.innerHTML += `$${this.orderTotal}`
+
   
     }
   }
