@@ -187,6 +187,10 @@ button {
 }
 
 /* Start cart list card styles */
+.cart-detail {
+  padding: 0.5em;
+}
+
 .cart-card {
   width: 100%;
   display: grid;
