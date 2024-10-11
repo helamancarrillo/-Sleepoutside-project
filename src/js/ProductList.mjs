@@ -29,14 +29,6 @@ export default class ProductListing {
     this.renderList(listToRender);
   }
 
-  // renderList(list) {
-  //   const htmlString = list.map(productListTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlString.join(""));
-  // }
-  // filterProductList(list) {
-  //   list.filter((el) => el.product.Name);
-  // }
-
   // Get the first 4 unique products
 
   filterProductList(list) {
@@ -54,11 +46,6 @@ export default class ProductListing {
   }
 
   renderList(list) {
-    renderListWithTemplate(
-      productListTemplate,
-      this.listElement,
-      list,
-      "afterbegin",
-    );
+    renderListWithTemplate(productListTemplate, this.listElement, list);
   }
 }
