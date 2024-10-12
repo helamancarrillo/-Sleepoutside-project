@@ -95,7 +95,8 @@ export default class CheckoutProcess {
       const res = await services.checkout(json);
       console.log(res);
       setLocalStorage("addToCart", []);
-      location.assign("/checkout.success.html");
+      location.assign("/checkout/success.html");
+      console.log("Order placed successfully");
     } catch (err) {
       removeAllAlerts();
       for (let message in err.message) {
