@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css" />
+</head>
+<body>
+
+    <main>
+
+        <form method="get" action="thankyou.html" class="join-class">
+
+            <fieldset>
+                <legend>Customer Name</legend>
+        
+        
+                <label>First Name*<input type="text" title="Enter your first name" id="firstnameid" name="firstname" required=""></label>
+        
+                <label>Last name*<input type="text" title="Enter your last name" id="lastnameid" name="last name" required=""></label>
+        
+                <!--<label>Mobile Phone Number*<input type="tel" id="mobileid" name="mobile phone number" title="Enter your mobile phone number" placeholder="12344321" required=""></label>
+        
+                <label>Email*<input type="email" id="emailid" name="email" title="Please enter a valid email address" placeholder="someone@gmail.com" required=""></label> -->
+        
+            </fieldset>
+            
+            <fieldset>
+                <legend>Address</legend>
+        
+                <label>Street Address* <input type="text" title="Enter your street address" id="org.name" name="organization name" required=""></label>
+        
+                <label>City*<input type="text" pattern="^[A-Za-z\s-]{7,}$" title="Enter your title or position in the organization" id="titleid" name="title or position"></label>
+        
+                <label>State*<input type="text" title="Enter your State name" id="stateid" name="state name" required=""></label>
+        
+                <label>Zip Code*<input type="text" title="Enter your Zip Code" id="zipid" name="zipcode name" required=""></label>
+        
+            </fieldset>
+        
+            <fieldset>
+                <legend>Payment</legend>
+        
+                <label>Credit Card Number* <input type="text" title="Enter your credit card number" id="credit.name" name="credit name" required=""></label>
+        
+                <label>Expiration Date*<input type="text" title="Enter your expiration date" id="expirationid" name="exp date"></label>
+        
+                <label>Security Code*<input type="text" title="Enter your security code" id="secodeid" name="security code" required=""></label>
+        
+            </fieldset>
+        
+            <input type="hidden" id="timestamp" name="timestamp" value="2024-10-09T19:38:39.629Z">
+        
+             
+            <input type="submit" value="Checkout">
+        
+        
+        </form>
+
+
+    </main>
+    
+</body>
+</html>
+

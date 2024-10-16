@@ -1,0 +1,23 @@
+
+
+.join-class fieldset{
+    margin: 2rem 0;
+    border: 3px dashed rgb(14, 33, 112);
+    border-radius: 6px;
+    padding: .5rem 2%;
+
+}
+
+.join-class legend{
+    color: rgb(14, 33, 112);
+    padding: 0 .5rem;
+    font-size: larger;
+    color: rgb(28, 21, 163);
+}
+
+.join-class label{
+    display: block;
+    padding: 1rem;
+    font-size: .9rem;
+
+}
